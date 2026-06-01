@@ -1,0 +1,7 @@
+Species,Core_AMR_Genes,Accessory_AMR_Genes,Unknown_AMR_Genes,Total_Core_Genes,Total_Accessory_Genes,OR,CI_Lower,CI_Upper,p_value,Significant,Direction
+Acinetobacter,20,39,8,2582,8578,1.709,0.943,3.009,0.06184415,No,No significant enrichment
+Enterobacter,0,60,10,1602,15670,0.0,0.0,0.619,0.005813156,Yes,Enriched in ACCESSORY
+Enterococcus,2,40,8,1468,6507,0.221,0.026,0.852,0.0163149,Yes,Enriched in ACCESSORY
+Klebsiella,5,70,17,4081,7331,0.127,0.04,0.312,6.839805e-09,Yes,Enriched in ACCESSORY
+Pseudomonas,23,32,29,4998,12223,1.761,0.983,3.109,0.05157892,No,No significant enrichment
+Staphylococcus,1,24,12,2120,2600,0.051,0.001,0.311,7.803185e-06,Yes,Enriched in ACCESSORY

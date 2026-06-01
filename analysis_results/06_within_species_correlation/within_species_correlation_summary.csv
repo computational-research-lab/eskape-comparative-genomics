@@ -1,0 +1,7 @@
+Species,N_Strains,Pearson_r,Pearson_p,Spearman_rho,Spearman_p,Mean_Accessory,Mean_AMR_Classes
+Acinetobacter,20,0.096,0.6882,-0.043,0.8575,1465.3,5.05
+Enterobacter,20,0.514,0.0203,0.717,0.0004,3175.2,5.5
+Enterococcus,20,0.808,0.0,0.612,0.0042,1570.8,5.85
+Klebsiella,20,0.309,0.185,0.282,0.229,1500.6,9.5
+Pseudomonas,20,0.455,0.0441,0.218,0.3548,1647.4,5.6
+Staphylococcus,20,0.927,0.0,0.812,0.0,708.8,6.05

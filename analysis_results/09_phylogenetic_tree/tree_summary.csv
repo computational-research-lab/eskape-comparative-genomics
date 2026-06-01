@@ -1,0 +1,7 @@
+Species,Strains,Alignment_Bp,SNP_Sites,Tree
+Acinetobacter,20,2444584,208555,/Users/admin/Desktop/ESKAPE/analysis_results/phylogeny/acinetobacter_core_tree.nwk
+Enterobacter,20,1629929,310231,/Users/admin/Desktop/ESKAPE/analysis_results/phylogeny/enterobacter_core_tree.nwk
+Enterococcus,20,1404230,103903,/Users/admin/Desktop/ESKAPE/analysis_results/phylogeny/enterococcus_core_tree.nwk
+Klebsiella,20,3947026,148275,/Users/admin/Desktop/ESKAPE/analysis_results/phylogeny/klebsiella_core_tree.nwk
+Pseudomonas,20,4935818,327246,/Users/admin/Desktop/ESKAPE/analysis_results/phylogeny/pseudomonas_core_tree.nwk
+Staphylococcus,20,1993428,98517,/Users/admin/Desktop/ESKAPE/analysis_results/phylogeny/staphylococcus_core_tree.nwk

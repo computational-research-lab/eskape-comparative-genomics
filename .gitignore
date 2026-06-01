@@ -1,0 +1,68 @@
+# =============================================================================
+# ESKAPE COMPARATIVE GENOMICS — GITIGNORE (Option 1: GitHub + Zenodo)
+# =============================================================================
+# Excludes manuscript files and large raw/intermediate data.
+# Code + summary tables live on GitHub.
+# Full ~8 GB dataset lives on Zenodo.
+# =============================================================================
+
+# Manuscript files (user request: exclude manuscript/)
+manuscript/
+
+# macOS system files
+.DS_Store
+*/.DS_Store
+**/.DS_Store
+
+# Large raw data (> 100 MB total; archived on Zenodo)
+genomes/
+prokka_out/
+roary_out/
+checkm2_results/
+amrfinder_results/
+databases/
+
+# Large per-strain intermediate files (raw DIAMOND outputs)
+analysis_results/08_virulence_analysis/*_vfdb.tsv
+
+# PNG figures in analysis_results (intermediate plots; keep manuscript figures in Zenodo)
+analysis_results/03_core_accessory_amr/*.png
+analysis_results/04_final_summary/*.png
+analysis_results/05_heatmaps/*.png
+analysis_results/06_within_species_correlation/*.png
+analysis_results/07_fisher_core_accessory/*.png
+analysis_results/02_mdr_analysis/*.png
+analysis_results/08_virulence_analysis/*.png
+
+# Per-species AMR mapping subfolders (large intermediate CSVs)
+analysis_results/03_core_accessory_amr/acinetobacter/
+analysis_results/03_core_accessory_amr/enterobacter/
+analysis_results/03_core_accessory_amr/enterococcus/
+analysis_results/03_core_accessory_amr/klebsiella/
+analysis_results/03_core_accessory_amr/pseudomonas/
+analysis_results/03_core_accessory_amr/staphylococcus/
+
+# Backup folders
+analysis_results_backup/
+
+# Temporary files
+*.tmp
+*.log
+*.swp
+*.swo
+*~
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/

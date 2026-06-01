@@ -1,0 +1,7 @@
+Species,Completeness,Contamination,Genome_Size,Contig_N50,Total_Contigs
+Acinetobacter,100.0,0.36,4246979.8,4199134.0,2.35
+Enterobacter,100.0,0.43,5116405.85,4976748.15,2.55
+Enterococcus,100.0,1.99,3188180.75,2930287.1,5.45
+Klebsiella,100.0,0.59,5904440.1,5649291.75,3.8
+Pseudomonas,100.0,0.51,7173356.75,7167743.7,1.3
+Staphylococcus,100.0,0.35,3007501.6,2984771.65,2.3

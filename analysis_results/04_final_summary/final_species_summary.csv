@@ -1,0 +1,7 @@
+Species,MDR_%,Avg_AMR_Classes,Core_Genes,Soft_Core_Genes,Shell_Genes,Cloud_Genes,Total_Genes,Accessory_Genes,Core_AMR_Hits,Accessory_AMR_Hits
+acinetobacter,100.0,5.05,2582,170,3034,5374,11160,8578,60,272
+enterobacter,95.0,5.5,1602,680,3326,11664,17272,15670,0,174
+enterococcus,90.0,5.85,1468,431,2514,3562,7975,6507,40,217
+klebsiella,95.0,9.5,4081,145,2957,4229,11412,7331,40,417
+pseudomonas,100.0,5.6,4998,228,3046,8949,17221,12223,95,73
+staphylococcus,80.0,6.05,2120,46,1242,1312,4720,2600,20,210
