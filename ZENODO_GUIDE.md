@@ -141,12 +141,12 @@ Kumar, P., & Singh, S. (2024). *Comparative Genomics of ESKAPE Pathogens: Integr
 | **GitHub** | Code + summary tables + metadata | ~30 MB |
 | **Zenodo** | Full input-to-output dataset (genomes, annotations, intermediates, results) | ~8 GB |
 
-The GitHub repository ([https://github.com/pankaj357/eskape-comparative-genomics](https://github.com/pankaj357/eskape-comparative-genomics)) contains the analysis scripts and key summary tables. The Zenodo archive contains the complete dataset required to fully reproduce every figure and table from scratch.
+The GitHub repository ([https://github.com/computational-research-lab/eskape-comparative-genomics](https://github.com/computational-research-lab/eskape-comparative-genomics)) contains the analysis scripts and key summary tables. The Zenodo archive contains the complete dataset required to fully reproduce every figure and table from scratch.
 
 ---
 
 ## Questions?
 
 For issues with the dataset or reproduction, please:
-1. Open an issue on GitHub: [https://github.com/pankaj357/eskape-comparative-genomics/issues](https://github.com/pankaj357/eskape-comparative-genomics/issues)
+1. Open an issue on GitHub: [https://github.com/computational-research-lab/eskape-comparative-genomics/issues](https://github.com/computational-research-lab/eskape-comparative-genomics/issues)
 2. Or contact the authors directly (see `AUTHORS.md`).
