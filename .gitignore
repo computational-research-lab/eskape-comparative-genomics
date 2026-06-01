@@ -66,3 +66,4 @@ venv/
 # IDE
 .vscode/
 .idea/
+eskape_full_dataset.tar.gz
