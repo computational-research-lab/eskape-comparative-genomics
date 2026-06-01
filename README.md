@@ -113,7 +113,7 @@ python analysis_scripts/09_phylogenetic_tree.py
 
 If you use this code or data, please cite the manuscript (in preparation) and the Zenodo dataset:
 
-> Kumar, P., & Singh, S. (2024). *Comparative Genomics of ESKAPE Pathogens: Integrating Pan-genome Architecture, Antimicrobial Resistance, and Virulence Factor Repertoires* [Dataset]. Zenodo. https://doi.org/10.5281/zenodo.20484092
+> Kumar, P., & Singh, S. (2026). *Comparative Genomics of ESKAPE Pathogens: Integrating Pan-genome Architecture, Antimicrobial Resistance, and Virulence Factor Repertoires* [Dataset]. Zenodo. https://doi.org/10.5281/zenodo.20484092
 
 ---
 
