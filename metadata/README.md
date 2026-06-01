@@ -12,4 +12,4 @@ This file maps each of the 120 analyzed strains to its NCBI Genome database acce
 | `NCBI_Assembly` | Assembly name (optional) |
 | `URL` | Direct link to NCBI assembly page |
 
-**Action required:** Fill in the `NCBI_Accession`, `NCBI_Assembly`, and `URL` columns before submission.
+All 120 strains have been annotated with their NCBI accession numbers, assembly names, and direct URLs.

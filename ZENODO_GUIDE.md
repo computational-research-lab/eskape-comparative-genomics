@@ -59,8 +59,7 @@ eskape_full_dataset/
 
 ### Option B: Command Line (wget/curl)
 ```bash
-# Replace XXXXXXX with the actual Zenodo record ID
-wget https://zenodo.org/record/XXXXXXX/files/eskape_full_dataset.zip
+wget https://zenodo.org/record/20484092/files/eskape_full_dataset.zip
 
 # Verify checksum (provided on Zenodo page)
 md5sum eskape_full_dataset.zip
@@ -73,7 +72,7 @@ unzip eskape_full_dataset.zip
 ```python
 import requests
 
-url = "https://zenodo.org/record/XXXXXXX/files/eskape_full_dataset.zip"
+url = "https://zenodo.org/record/20484092/files/eskape_full_dataset.zip"
 r = requests.get(url)
 with open("eskape_full_dataset.zip", "wb") as f:
     f.write(r.content)
@@ -113,18 +112,18 @@ Expected output:
 ## How to Cite the Dataset
 
 ### APA
-Kumar, P., & Singh, S. (2024). *Comparative Genomics of ESKAPE Pathogens: Integrating Pan-genome Architecture, Antimicrobial Resistance, and Virulence Factor Repertoires — Full Dataset* [Dataset]. Zenodo. https://doi.org/10.5281/zenodo.20484092
+Kumar, P., & Singh, S. (2026). *Comparative Genomics of ESKAPE Pathogens: Integrating Pan-genome Architecture, Antimicrobial Resistance, and Virulence Factor Repertoires — Full Dataset* [Dataset]. Zenodo. https://doi.org/10.5281/zenodo.20484092
 
 ### BibTeX
 ```bibtex
-@dataset{kumar_singh_2024_eskape,
+@dataset{kumar_singh_2026_eskape,
   author       = {Kumar, Pankaj and Singh, Srishti},
   title        = {Comparative Genomics of ESKAPE Pathogens: 
                   Integrating Pan-genome Architecture, Antimicrobial 
                   Resistance, and Virulence Factor Repertoires — 
                   Full Dataset},
   month        = may,
-  year         = 2024,
+  year         = 2026,
   publisher    = {Zenodo},
   version      = {1.0},
   doi          = {10.5281/zenodo.20484092},
