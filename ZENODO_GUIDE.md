@@ -11,8 +11,8 @@ This document explains how to access, verify, and cite the complete ESKAPE compa
 | **Title** | Comparative Genomics of ESKAPE Pathogens: Integrating Pan-genome Architecture, Antimicrobial Resistance, and Virulence Factor Repertoires — Full Dataset |
 | **Authors** | Pankaj Kumar, Srishti Singh |
 | **Affiliation** | Indian Agricultural Research Institute (IARI), New Delhi, India |
-| **DOI** | [10.5281/zenodo.XXXXXXX](https://doi.org/10.5281/zenodo.XXXXXXX) |
-| **URL** | [https://doi.org/10.5281/zenodo.XXXXXXX](https://doi.org/10.5281/zenodo.XXXXXXX) |
+| **DOI** | [10.5281/zenodo.20484092](https://doi.org/10.5281/zenodo.20484092) |
+| **URL** | [https://doi.org/10.5281/zenodo.20484092](https://doi.org/10.5281/zenodo.20484092) |
 | **License** | CC-BY 4.0 |
 | **Upload type** | Dataset |
 | **Size** | ~8 GB |
@@ -113,7 +113,7 @@ Expected output:
 ## How to Cite the Dataset
 
 ### APA
-Kumar, P., & Singh, S. (2024). *Comparative Genomics of ESKAPE Pathogens: Integrating Pan-genome Architecture, Antimicrobial Resistance, and Virulence Factor Repertoires — Full Dataset* [Dataset]. Zenodo. https://doi.org/10.5281/zenodo.XXXXXXX
+Kumar, P., & Singh, S. (2024). *Comparative Genomics of ESKAPE Pathogens: Integrating Pan-genome Architecture, Antimicrobial Resistance, and Virulence Factor Repertoires — Full Dataset* [Dataset]. Zenodo. https://doi.org/10.5281/zenodo.20484092
 
 ### BibTeX
 ```bibtex
@@ -127,8 +127,8 @@ Kumar, P., & Singh, S. (2024). *Comparative Genomics of ESKAPE Pathogens: Integr
   year         = 2024,
   publisher    = {Zenodo},
   version      = {1.0},
-  doi          = {10.5281/zenodo.XXXXXXX},
-  url          = {https://doi.org/10.5281/zenodo.XXXXXXX}
+  doi          = {10.5281/zenodo.20484092},
+  url          = {https://doi.org/10.5281/zenodo.20484092}
 }
 ```
 
