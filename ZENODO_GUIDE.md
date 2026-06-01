@@ -15,7 +15,7 @@ This document explains how to access, verify, and cite the complete ESKAPE compa
 | **URL** | [https://doi.org/10.5281/zenodo.20484092](https://doi.org/10.5281/zenodo.20484092) |
 | **License** | CC-BY 4.0 |
 | **Upload type** | Dataset |
-| **Size** | ~8 GB |
+| **Size** | ~2.2 GB compressed (~7.9 GB extracted) |
 
 ---
 
@@ -55,26 +55,26 @@ eskape_full_dataset/
 
 ### Option A: Direct Download (Browser)
 1. Visit the Zenodo record URL.
-2. Click the **Download** button next to `eskape_full_dataset.zip`.
+2. Click the **Download** button next to `eskape_full_dataset.tar.gz`.
 
 ### Option B: Command Line (wget/curl)
 ```bash
-wget https://zenodo.org/record/20484092/files/eskape_full_dataset.zip
+wget "https://zenodo.org/records/20484092/files/eskape_full_dataset.tar.gz?download=1"
 
 # Verify checksum (provided on Zenodo page)
-md5sum eskape_full_dataset.zip
+md5sum eskape_full_dataset.tar.gz
 
 # Extract
-unzip eskape_full_dataset.zip
+tar -xzf eskape_full_dataset.tar.gz
 ```
 
 ### Option C: Python
 ```python
 import requests
 
-url = "https://zenodo.org/record/20484092/files/eskape_full_dataset.zip"
+url = "https://zenodo.org/records/20484092/files/eskape_full_dataset.tar.gz?download=1"
 r = requests.get(url)
-with open("eskape_full_dataset.zip", "wb") as f:
+with open("eskape_full_dataset.tar.gz", "wb") as f:
     f.write(r.content)
 ```
 
