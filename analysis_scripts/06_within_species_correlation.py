@@ -6,6 +6,33 @@ import seaborn as sns
 from scipy.stats import pearsonr, spearmanr
 
 # ===============================
+# HELPERS
+# ===============================
+def benjamini_hochberg(p_values):
+    """
+    Compute Benjamini-Hochberg FDR q-values.
+    Returns array of q-values in the same order as input p_values.
+    """
+    p_values = np.asarray(p_values, dtype=float)
+    n = len(p_values)
+    if n == 0:
+        return np.array([])
+    order = np.argsort(p_values)
+    sorted_p = p_values[order]
+    ranks = np.arange(1, n + 1)
+    # BH-adjusted p-values (non-monotonic)
+    raw_q = sorted_p * n / ranks
+    # Enforce monotonicity from largest to smallest
+    monotonic_q = np.minimum.accumulate(raw_q[::-1])[::-1]
+    # Clip at 1.0
+    monotonic_q = np.clip(monotonic_q, 0.0, 1.0)
+    # Restore original order
+    q_values = np.empty(n)
+    q_values[order] = monotonic_q
+    return q_values
+
+
+# ===============================
 # CONFIG
 # ===============================
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -29,6 +56,8 @@ species_list = sorted([d for d in os.listdir(ROARY_DIR)
 
 results = []
 plot_data = []
+pearson_p_values = []
+spearman_p_values = []
 
 for species in species_list:
     species_cap = species.capitalize()
@@ -66,6 +95,8 @@ for species in species_list:
     # Correlations
     r_pearson, p_pearson = pearsonr(merged["Accessory_Genes"], merged["Total_Classes"])
     r_spear, p_spear = spearmanr(merged["Accessory_Genes"], merged["Total_Classes"])
+    pearson_p_values.append(p_pearson)
+    spearman_p_values.append(p_spear)
 
     results.append({
         "Species": species_cap,
@@ -84,6 +115,16 @@ for species in species_list:
 
     print(f"✅ {species_cap:15s} | n={len(merged):2d} | Pearson r={r_pearson:+.3f} (p={p_pearson:.3f}) | "
           f"Spearman ρ={r_spear:+.3f} (p={p_spear:.3f})")
+
+# ===============================
+# APPLY BENJAMINI-HOCHBERG FDR CORRECTION
+# ===============================
+if results:
+    pearson_q_values = benjamini_hochberg(pearson_p_values)
+    spearman_q_values = benjamini_hochberg(spearman_p_values)
+    for i in range(len(results)):
+        results[i]["Pearson_q"] = round(pearson_q_values[i], 6)
+        results[i]["Spearman_q"] = round(spearman_q_values[i], 6)
 
 # ===============================
 # SAVE SUMMARY TABLE
@@ -122,6 +163,7 @@ if plot_data:
     g.set_axis_labels("Accessory Genome Size (genes)", "AMR Classes")
     g.set_titles(col_template="{col_name}", size=11, weight='bold')
     g.add_legend(title="MDR", adjust_subtitles=True)
+
     g.tight_layout()
 
     plot_path = os.path.join(OUT_DIR, "within_species_accessory_vs_amr.png")

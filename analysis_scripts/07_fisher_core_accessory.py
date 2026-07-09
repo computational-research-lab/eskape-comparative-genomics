@@ -61,6 +61,30 @@ def fisher_with_ci(a, b, c, d, alpha=0.05):
     return fisher_exact_r(a, b, c, d)
 
 
+def benjamini_hochberg(p_values):
+    """
+    Compute Benjamini-Hochberg FDR q-values.
+    Returns array of q-values in the same order as input p_values.
+    """
+    p_values = np.asarray(p_values, dtype=float)
+    n = len(p_values)
+    if n == 0:
+        return np.array([])
+    order = np.argsort(p_values)
+    sorted_p = p_values[order]
+    ranks = np.arange(1, n + 1)
+    # BH-adjusted p-values (non-monotonic)
+    raw_q = sorted_p * n / ranks
+    # Enforce monotonicity from largest to smallest
+    monotonic_q = np.minimum.accumulate(raw_q[::-1])[::-1]
+    # Clip at 1.0
+    monotonic_q = np.clip(monotonic_q, 0.0, 1.0)
+    # Restore original order
+    q_values = np.empty(n)
+    q_values[order] = monotonic_q
+    return q_values
+
+
 # ===============================
 # MAIN
 # ===============================
@@ -68,6 +92,7 @@ species_list = sorted([d for d in os.listdir(ROARY_DIR)
                        if os.path.isdir(os.path.join(ROARY_DIR, d))])
 
 results = []
+raw_p_values = []
 
 print("=" * 70)
 print("Fisher's Exact Test: AMR Enrichment in Core vs Accessory Genome")
@@ -114,8 +139,9 @@ for species in species_list:
     c, d = nonamr_core, nonamr_acc
 
     or_val, p_val, ci_lo, ci_hi = fisher_with_ci(a, b, c, d)
+    raw_p_values.append(p_val)
 
-    # Direction
+    # Direction (based on uncorrected p < 0.05 for backwards compatibility)
     if or_val > 1 and p_val < 0.05:
         direction = "Enriched in CORE"
     elif or_val < 1 and p_val < 0.05:
@@ -146,6 +172,15 @@ for species in species_list:
     print(f"  p = {p_val:.4f} → {direction}")
 
 # ===============================
+# APPLY BENJAMINI-HOCHBERG FDR CORRECTION
+# ===============================
+if results:
+    fdr_q_values = benjamini_hochberg(raw_p_values)
+    for i, q_val in enumerate(fdr_q_values):
+        results[i]["FDR_q"] = round(q_val, 6)
+        results[i]["Significant_after_FDR"] = "Yes" if q_val < 0.05 else "No"
+
+# ===============================
 # SAVE SUMMARY
 # ===============================
 if results:
@@ -154,38 +189,47 @@ if results:
     res_df.to_csv(out_csv, index=False)
     print(f"\n✅ Summary saved: {out_csv}")
     print("\n📋 Final Summary:")
-    print(res_df[["Species", "Core_AMR_Genes", "Accessory_AMR_Genes", "OR", "CI_Lower", "CI_Upper", "p_value", "Direction"]].to_string(index=False))
+    print(res_df[["Species", "Core_AMR_Genes", "Accessory_AMR_Genes", "OR", "CI_Lower", "CI_Upper", "p_value", "FDR_q", "Significant_after_FDR"]].to_string(index=False))
 
     # ===============================
     # PLOT: Odds Ratios
     # ===============================
     plot_df = res_df.copy()
-    plot_df["Significant"] = plot_df["p_value"] < 0.05
-    plot_df["Color"] = plot_df["Direction"].map({
-        "Enriched in CORE": "#4CAF50",
-        "Enriched in ACCESSORY": "#F44336",
-        "No significant enrichment": "#9E9E9E"
-    })
+    plot_df["Significant_FDR"] = plot_df["Significant_after_FDR"] == "Yes"
+    plot_df["Color"] = plot_df.apply(
+        lambda row: "#F44336" if (row["OR"] < 1 and row["Significant_FDR"])
+        else "#4CAF50" if (row["OR"] > 1 and row["Significant_FDR"])
+        else "#9E9E9E",
+        axis=1
+    )
+    plot_df["MarkerFaceColor"] = plot_df.apply(
+        lambda row: row["Color"] if row["Significant_FDR"] else "white",
+        axis=1
+    )
 
-    plt.figure(figsize=(10, 6))
+    plt.figure(figsize=(11, 6))
 
     for idx, row in plot_df.iterrows():
         color = row["Color"]
+        facecolor = row["MarkerFaceColor"]
         or_val = row["OR"]
         ci_lo = row["CI_Lower"]
         ci_hi = row["CI_Upper"]
 
         # Handle edge cases where OR == 0 or CI bounds cross
         if or_val == 0:
-            or_plot = ci_lo / 2
-            err_lo = or_plot * 0.5
+            # Plot a zero OR at a small positive value so it is visible on the log scale.
+            # The reported OR and CI are unchanged; this is purely for visualization.
+            or_plot = 0.001
+            err_lo = or_plot * 0.999  # lower cap near zero; clipped at axis floor
+            err_hi = ci_hi - or_plot
         else:
             or_plot = or_val
             err_lo = or_plot - ci_lo
             if err_lo < 0:
                 err_lo = or_plot * 0.01
+            err_hi = ci_hi - or_plot
 
-        err_hi = ci_hi - or_plot
         if err_hi < 0:
             err_hi = or_plot * 0.01
 
@@ -193,6 +237,7 @@ if results:
             x=idx, y=or_plot,
             yerr=[[err_lo], [err_hi]],
             fmt='o', color=color, ecolor=color, capsize=5, capthick=2, markersize=10,
+            markerfacecolor=facecolor,
             markeredgecolor='black', markeredgewidth=1.2
         )
 
@@ -200,19 +245,21 @@ if results:
     plt.axhline(y=1, color='black', linestyle='--', linewidth=1)
     plt.ylabel("Odds Ratio (AMR in Core vs Accessory)", fontsize=12)
     plt.xlabel("Species", fontsize=12)
-    plt.title("AMR Gene Enrichment: Core vs Accessory Genome\n(OR > 1 = Core-enriched; OR < 1 = Accessory-enriched)",
+    plt.title("AMR Gene Enrichment: Core vs Accessory Genome\n(OR > 1 = Core-enriched; OR < 1 = Accessory-enriched; FDR q < 0.05 = filled)",
               fontsize=13, weight='bold')
     plt.yscale('log')
     plt.grid(axis='y', linestyle='--', alpha=0.5)
 
     # Custom legend
     from matplotlib.patches import Patch
+    import matplotlib.lines as mlines
     legend_elements = [
-        Patch(facecolor="#4CAF50", edgecolor='black', label="Core-enriched (p<0.05)"),
-        Patch(facecolor="#F44336", edgecolor='black', label="Accessory-enriched (p<0.05)"),
-        Patch(facecolor="#9E9E9E", edgecolor='black', label="Not significant")
+        Patch(facecolor="#F44336", edgecolor='black', label="Accessory-enriched (FDR q<0.05)"),
+        Patch(facecolor="#4CAF50", edgecolor='black', label="Core-enriched (FDR q<0.05)"),
+        mlines.Line2D([], [], marker='o', color='w', markerfacecolor='white',
+                      markeredgecolor='black', markersize=10, label="Not significant (FDR q≥0.05)")
     ]
-    plt.legend(handles=legend_elements, loc='upper right', frameon=False)
+    plt.legend(handles=legend_elements, loc='upper left', bbox_to_anchor=(1.02, 1), frameon=False)
 
     plt.tight_layout()
     plot_path = os.path.join(OUT_DIR, "fisher_core_accessory_oddsratios.png")

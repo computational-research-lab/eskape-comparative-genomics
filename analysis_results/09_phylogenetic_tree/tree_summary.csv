@@ -1,7 +1,7 @@
-Species,Strains,Alignment_Bp,SNP_Sites,Tree
-Acinetobacter,20,2444584,208555,/Users/admin/Desktop/ESKAPE/analysis_results/phylogeny/acinetobacter_core_tree.nwk
-Enterobacter,20,1629929,310231,/Users/admin/Desktop/ESKAPE/analysis_results/phylogeny/enterobacter_core_tree.nwk
-Enterococcus,20,1404230,103903,/Users/admin/Desktop/ESKAPE/analysis_results/phylogeny/enterococcus_core_tree.nwk
-Klebsiella,20,3947026,148275,/Users/admin/Desktop/ESKAPE/analysis_results/phylogeny/klebsiella_core_tree.nwk
-Pseudomonas,20,4935818,327246,/Users/admin/Desktop/ESKAPE/analysis_results/phylogeny/pseudomonas_core_tree.nwk
-Staphylococcus,20,1993428,98517,/Users/admin/Desktop/ESKAPE/analysis_results/phylogeny/staphylococcus_core_tree.nwk
+Species,Strains,Alignment_Bp,SNP_Sites,Substitution_Model,Bootstrap_Replicates,Bootstrap_Type,Runtime_Sec,Tree,Log
+Acinetobacter,20,2444584,112158,GTR+Gamma,1000,FastTree local bootstrap,1844.0,/data/kanaka/pankaj/ESKAPE/analysis_results/09_phylogenetic_tree/acinetobacter_core_tree.nwk,/data/kanaka/pankaj/ESKAPE/analysis_results/09_phylogenetic_tree/acinetobacter_fasttree.log
+Enterobacter,20,1629929,279993,GTR+Gamma,1000,FastTree local bootstrap,1701.4,/data/kanaka/pankaj/ESKAPE/analysis_results/09_phylogenetic_tree/enterobacter_core_tree.nwk,/data/kanaka/pankaj/ESKAPE/analysis_results/09_phylogenetic_tree/enterobacter_fasttree.log
+Enterococcus,20,1404230,66449,GTR+Gamma,1000,FastTree local bootstrap,1089.3,/data/kanaka/pankaj/ESKAPE/analysis_results/09_phylogenetic_tree/enterococcus_core_tree.nwk,/data/kanaka/pankaj/ESKAPE/analysis_results/09_phylogenetic_tree/enterococcus_fasttree.log
+Klebsiella,20,3947026,56834,GTR+Gamma,1000,FastTree local bootstrap,3633.5,/data/kanaka/pankaj/ESKAPE/analysis_results/09_phylogenetic_tree/klebsiella_core_tree.nwk,/data/kanaka/pankaj/ESKAPE/analysis_results/09_phylogenetic_tree/klebsiella_fasttree.log
+Pseudomonas,20,4935818,130182,GTR+Gamma,1000,FastTree local bootstrap,4053.4,/data/kanaka/pankaj/ESKAPE/analysis_results/09_phylogenetic_tree/pseudomonas_core_tree.nwk,/data/kanaka/pankaj/ESKAPE/analysis_results/09_phylogenetic_tree/pseudomonas_fasttree.log
+Staphylococcus,20,1993428,20145,GTR+Gamma,1000,FastTree local bootstrap,1976.4,/data/kanaka/pankaj/ESKAPE/analysis_results/09_phylogenetic_tree/staphylococcus_core_tree.nwk,/data/kanaka/pankaj/ESKAPE/analysis_results/09_phylogenetic_tree/staphylococcus_fasttree.log
