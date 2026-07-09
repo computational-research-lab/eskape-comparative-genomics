@@ -1,6 +1,6 @@
 # Comparative Genomics of ESKAPE Pathogens
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20484092.svg)](https://doi.org/10.5281/zenodo.20484092)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21283840.svg)](https://doi.org/10.5281/zenodo.21283840)
 
 This repository contains the analysis pipeline and summary data for:
 
@@ -65,7 +65,7 @@ All data supporting the findings of this study are available as follows:
 | **Supplementary figures** | Archived on Zenodo (see below) |
 | **Phylogenetic trees** | `analysis_results/09_phylogenetic_tree/` |
 | **Raw genome assemblies** | NCBI Genome database (`metadata/strain_accessions.csv`) |
-| **Complete input-to-output dataset** | **Zenodo** [https://doi.org/10.5281/zenodo.20484092](https://doi.org/10.5281/zenodo.20484092) |
+| **Complete input-to-output dataset** | **Zenodo** https://doi.org/10.5281/zenodo.21283840 |
 
 ### Reference Databases
 - **AMRFinderPlus reference database** — NCBI ([https://www.ncbi.nlm.nih.gov/pathogens/antimicrobial-resistance/](https://www.ncbi.nlm.nih.gov/pathogens/antimicrobial-resistance/))
@@ -77,7 +77,7 @@ All data supporting the findings of this study are available as follows:
 
 The complete dataset—including raw genome assemblies, Prokka annotations, Roary pan-genome outputs, CheckM2 quality reports, AMRFinderPlus raw results, and per-strain DIAMOND outputs—is archived on **Zenodo**:
 
-> **Zenodo Record:** [https://doi.org/10.5281/zenodo.20484092](https://doi.org/10.5281/zenodo.20484092)  
+> **Zenodo Record (Version 2):** https://doi.org/10.5281/zenodo.21283840
 > **Size:** ~8 GB  
 > **License:** CC-BY 4.0
 
@@ -113,7 +113,7 @@ python analysis_scripts/09_phylogenetic_tree.py
 
 If you use this code or data, please cite the manuscript (in preparation) and the Zenodo dataset:
 
-> Kumar, P., & Singh, S. (2026). *Comparative Genomics of ESKAPE Pathogens: Integrating Pan-genome Architecture, Antimicrobial Resistance, and Virulence Factor Repertoires* [Dataset]. Zenodo. https://doi.org/10.5281/zenodo.20484092
+> Kumar, P., & Singh, S. (2026). *Comparative Genomics of ESKAPE Pathogens: Integrating Pan-genome Architecture, Antimicrobial Resistance, and Virulence Factor Repertoires* (Version 2) [Dataset]. Zenodo. https://doi.org/10.5281/zenodo.21283840
 
 ---
 
