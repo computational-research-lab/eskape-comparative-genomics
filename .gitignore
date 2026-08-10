@@ -67,3 +67,4 @@ venv/
 .vscode/
 .idea/
 eskape_full_dataset.tar.gz
+analysis_results/10_fragmentation_accessory_correlation/*.png

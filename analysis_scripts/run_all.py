@@ -13,6 +13,11 @@ SCRIPTS = [
     "03_core_accessory_amr.py",
     "04_final_summary.py",
     "05_heatmaps.py",
+    "06_within_species_correlation.py",
+    "07_fisher_core_accessory.py",
+    "08_virulence_analysis.py",
+    "09_phylogenetic_tree.py",
+    "10_fragmentation_accessory_correlation.py",
 ]
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))

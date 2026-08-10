@@ -31,20 +31,22 @@ We analyzed 120 high-quality genomes (20 strains × 6 species) from six ESKAPE p
 - **AMR profiling** — AMRFinderPlus v4.2.7
 - **Virulence screening** — DIAMOND v2.2.1 against VFDB
 - **Statistical analysis** — Python (pandas, SciPy, seaborn)
+- **Assembly-quality control analysis** — Fragmentation vs accessory genome size correlation
 
 ---
 
 ## Repository Structure
 
 ```
-├── analysis_scripts/          # Python pipeline scripts (01–09)
+├── analysis_scripts/          # Python pipeline scripts (01–10)
 ├── analysis_results/          # Key result tables and figures
 │   ├── 01_build_amr_matrix/
 │   ├── 02_mdr_analysis/
 │   ├── 04_final_summary/
 │   ├── 06_within_species_correlation/
 │   ├── 07_fisher_core_accessory/
-│   └── 09_phylogenetic_tree/
+│   ├── 09_phylogenetic_tree/
+│   └── 10_fragmentation_accessory_correlation/
 ├── metadata/                  # Strain metadata & NCBI accessions
 ├── AUTHORS.md                 # Authorship and contribution statement
 ├── README.md                  # This file

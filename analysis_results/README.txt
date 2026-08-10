@@ -137,3 +137,24 @@ BACKUP
 ------------------------------------------------------------------------------
 analysis_results_backup/ contains the original flat directory structure before
 reorganization (created prior to moving files).
+
+------------------------------------------------------------------------------
+10_fragmentation_accessory_correlation/
+------------------------------------------------------------------------------
+Script: 10_fragmentation_accessory_correlation.py
+Inputs: roary_out/*/gene_presence_absence.csv + 04_final_summary/checkm2_summary.csv
+Description: Correlates per-strain accessory genome size with assembly fragmentation
+             metrics (total contigs, contig N50) to rule out assembly quality bias.
+
+Files:
+  - fragmentation_accessory_correlation.csv   # Pearson/Spearman summary per species
+  - per_strain_accessory_fragmentation.csv    # Per-strain accessory counts and QC metrics
+  - fragmentation_accessory_correlation.png   # Supplementary Figure S9
+
+Manuscript reference:
+  - Supplementary Figure S9
+  - Supplementary Table S6
+
+Key result: No consistent evidence that fragmentation inflates accessory gene counts;
+            in five species, larger accessory genomes were associated with higher
+            (more contiguous) contig N50 values.
